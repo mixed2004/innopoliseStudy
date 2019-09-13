@@ -1,6 +1,9 @@
 package ru.MaximBorisov.Lesson3;
 
+
 import java.util.Scanner;
+
+import static org.apache.commons.lang3.math.NumberUtils.isNumber;
 
 public class HotColdGame {
     public static void main(String[] args) {
@@ -14,7 +17,7 @@ public class HotColdGame {
         do {
             System.out.println("введите целое число от 0 до 100");
             String inputString = input.nextLine();
-            if (!inputString.equals("exit")) {
+            if (!inputString.equals("exit") && isNumber(inputString)) {
                 next = Integer.parseInt(inputString);
                 if (Math.abs(x - previous) > Math.abs(x - next)) {
                     System.out.println("HOT");
@@ -25,11 +28,14 @@ public class HotColdGame {
                 }
                 previous = next;
             } else {
-                break;
+                if (!inputString.equals("exit")) {
+                    continue;
+                } else {
+                    break;
+                }
             }
             if (next == x) {
                 System.out.println("угадал");
-
             }
         } while (x != next);
     }

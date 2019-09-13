@@ -12,7 +12,7 @@ public class GasolineCost {
                             .collect(Collectors.joining())
             );
             double costGasolineForLitr = 40;
-            System.out.printf("%d бензина по цене %f стоит: %e" , amountOfGasoline , costGasolineForLitr , amountOfGasoline * costGasolineForLitr);
+            System.out.printf("%d бензина по цене %d стоит: %d" , amountOfGasoline , costGasolineForLitr , amountOfGasoline * costGasolineForLitr);
         } catch (NumberFormatException e) {
             System.out.println("Wrong Input");
         }

@@ -47,4 +47,7 @@ public class Calc {
     public static void multiple(double first, double second) {
         result = first * second;
     }
+    public double getResult() {
+        return this.result;
+    }
 }

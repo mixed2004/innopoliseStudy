@@ -15,7 +15,7 @@ public class Duck extends Animal implements Run, Swim, Fly {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "Duck";
     }
 
     /**

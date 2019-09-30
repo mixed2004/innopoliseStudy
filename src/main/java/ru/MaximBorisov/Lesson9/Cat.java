@@ -15,7 +15,7 @@ public class Cat extends Animal implements Run {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "Cat";
     }
 
     /**

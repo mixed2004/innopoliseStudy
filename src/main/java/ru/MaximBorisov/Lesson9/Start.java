@@ -19,5 +19,6 @@ public class Start {
         new OldMan().swim();
         new YoungMan().run();
         new YoungMan().swim();
+
     }
 }

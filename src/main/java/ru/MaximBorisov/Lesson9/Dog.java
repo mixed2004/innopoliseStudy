@@ -15,7 +15,7 @@ public class Dog extends Animal implements Run, Swim {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "Dog";
     }
 
     /**

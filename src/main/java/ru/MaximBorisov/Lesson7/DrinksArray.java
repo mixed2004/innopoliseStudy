@@ -1,4 +1,5 @@
 package ru.MaximBorisov.Lesson7;
+
 /**
  * класс enum для списка напитков - DrinksArray.
  *
@@ -75,8 +76,9 @@ public enum DrinksArray {
 
     @Override
     public String toString() {
-        return "Напиток " +  idDrink +
-                ", название: " + drinkName  +
+        return "Напиток " + idDrink +
+                ", название: " + drinkName +
                 ", стоимость=" + drinkCost;
     }
+
 }

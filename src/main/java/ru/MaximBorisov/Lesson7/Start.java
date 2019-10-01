@@ -20,6 +20,7 @@ public class Start {
         /**
          * количество внеенных денег.
          */
+        Start start = new Start();
         int userMoney = 0;
         Scanner input = new Scanner(System.in);
         for (DrinksArray menu : DrinksArray.values()) {
@@ -33,24 +34,30 @@ public class Start {
         }
         System.out.print("Выберите напиток ");
         int numberDrink = input.nextInt();
-        switch (numberDrink) {
-            case 1:
-                if (userMoney >= DrinksArray.COCACOLA.getDrinkCost())
-                    System.out.println("возьмите " + DrinksArray.COCACOLA.getDrinkName());
-                else System.out.println("недостаточно средств");
+        DrinksArray drink = null;
+        drink = start.findDrinkById(numberDrink);
+        if (drink != null) {
+            if (userMoney >= drink.getDrinkCost()) {
+                System.out.println("возьмите " + drink.getDrinkName());
+            } else System.out.println("недостаточно средств");
+        } else System.out.println("выбранного напитка не существует");
+
+    }
+
+    /**
+     * метод поиска напитка по id.
+     *
+     * @param id
+     * @return
+     */
+    public DrinksArray findDrinkById(int id) {
+        DrinksArray result = null;
+        for (DrinksArray ar : DrinksArray.values()) {
+            if (id == ar.getIdDrink()) {
+                result = ar;
                 break;
-            case 2:
-                if (userMoney >= DrinksArray.TEA.getDrinkCost())
-                    System.out.println("возьмите " + DrinksArray.TEA.getDrinkName());
-                else System.out.println("недостаточно средств");
-                break;
-            case 3:
-                if (userMoney >= DrinksArray.COFFE.getDrinkCost())
-                    System.out.println("возьмите " + DrinksArray.COFFE.getDrinkName());
-                else System.out.println("недостаточно средств");
-                break;
-            default:
-                System.out.println("wrong input");
+            }
         }
+        return result;
     }
 }

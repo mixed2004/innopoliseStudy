@@ -1,6 +1,9 @@
 package ru.MaximBorisov.Lesson7;
 
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 /**
  * класс Start.
@@ -10,6 +13,7 @@ import java.util.Scanner;
  * @since 22.09.2019
  */
 public class Start {
+    private static final Logger logger = Logger.getLogger(Start.class.getName());
     /**
      * main.
      *
@@ -17,6 +21,10 @@ public class Start {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+        Handler fileHandler = new FileHandler("%h/vending.log");
+        logger.addHandler(fileHandler);
+        logger.setUseParentHandlers(false);
+
         /**
          * количество внеенных денег.
          */
@@ -25,22 +33,33 @@ public class Start {
         Scanner input = new Scanner(System.in);
         for (DrinksArray menu : DrinksArray.values()) {
             System.out.println(menu.toString());
+            logger.info("вывод меню");
         }
         System.out.print("введите сумму: ");
         try {
             userMoney = input.nextInt();
+            logger.info("ввод средств на счет");
         } catch (NumberFormatException nfe) {
             System.out.println("Wrong Input");
+            logger.warning(nfe.toString());
         }
         System.out.print("Выберите напиток ");
         int numberDrink = input.nextInt();
+        logger.info("выбор напитка");
         DrinksArray drink = null;
         drink = start.findDrinkById(numberDrink);
         if (drink != null) {
             if (userMoney >= drink.getDrinkCost()) {
                 System.out.println("возьмите " + drink.getDrinkName());
-            } else System.out.println("недостаточно средств");
-        } else System.out.println("выбранного напитка не существует");
+                logger.info("получен " + drink.getDrinkName());
+            } else{
+                System.out.println("недостаточно средств");
+                logger.warning("недостаточно средств");
+            }
+        } else {
+            System.out.println("выбранного напитка не существует");
+            logger.warning("выбранного напитка не существует");
+        }
 
     }
 

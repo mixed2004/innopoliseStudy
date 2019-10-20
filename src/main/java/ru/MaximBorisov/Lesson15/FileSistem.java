@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 
 public class FileSistem {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FileSistem fileSistem = new FileSistem();
         File currentClass = null;
         try {
@@ -23,7 +23,6 @@ public class FileSistem {
             e.printStackTrace();
         }
         String classDirectory = currentClass.getParent();
-
         File fileOne = fileSistem.createFile(classDirectory, "test.txt");
         File fileTwo = fileSistem.renameFile(fileOne, "test2.txt");
         File fileThree = fileSistem.copyFile(fileTwo);
@@ -37,7 +36,7 @@ public class FileSistem {
             String trackFile = track + File.separator + name;
             Path path = Paths.get(trackFile);
             result = new File(trackFile);
-            Files.createFile(path);
+                        Files.createFile(path);
             System.out.println("создан файл" + trackFile);
 
         } catch (IOException e) {

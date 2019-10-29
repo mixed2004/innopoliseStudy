@@ -9,6 +9,7 @@ public class Cheque {
         try (Scanner scanner = new Scanner(new File("products.txt"))) {
             double totalCost = 0;
             String string;
+            String s= "%-20s%10.3f  x %10.2f%15.2f\n";
             double count, price;
             scanner.useDelimiter("\n");
             System.out.printf("%-20s%10s%10s%19s\n", "Наименование", "Кол-во", "Цена", "Стоимость");
@@ -18,7 +19,7 @@ public class Cheque {
                 count = scanner.nextDouble();
                 price = scanner.nextDouble();
                 totalCost += count * price;
-                System.out.printf("%-20s%10.3f  x %10.2f%15.2f\n", string, count, price, count * price);
+                System.out.printf(s, string, count, price, count * price);
 
             }
             System.out.println("===========================================================");

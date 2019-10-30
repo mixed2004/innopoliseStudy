@@ -15,23 +15,19 @@ public class ReadDateFromInternet {
             try (InputStream is = url.openStream();
                  Reader reader = new InputStreamReader(is);
                  BufferedReader br = new BufferedReader(reader)) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    System.out.println(line);
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-                    objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-                    Holiday day = objectMapper.readValue(line, Holiday.class);
-                    System.out.println(day);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+                String line = br.readLine();
+                System.out.println(line);
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+                objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+   //             line="{\"holiday\": true, \"date\": \"2019-10-30\"}";
+                Holiday day = objectMapper.readValue(line, Holiday.class);
+                System.out.println(day);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }
 }
-
 
 

@@ -1,5 +1,7 @@
 package ru.MaximBorisov.Lesson31;
 
+import java.util.Stack;
+
 import static java.lang.String.copyValueOf;
 
 public class Palindrom {
@@ -18,5 +20,17 @@ public class Palindrom {
             ar[arLength - i - 1] = temp;
         }
         return str.equalsIgnoreCase(copyValueOf(ar));
+    }
+
+    public boolean isPalindromStack(String str) {
+        Stack<Character> stringStack = new Stack<>();
+        String reversString = "";
+        for (int i = 0; i < str.length(); i++) {
+            stringStack.push(str.charAt(i));
+        }
+        while (!stringStack.isEmpty()) {
+            reversString += stringStack.pop();
+        }
+        return str.equalsIgnoreCase(reversString);
     }
 }

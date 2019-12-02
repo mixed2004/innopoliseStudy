@@ -34,4 +34,17 @@ public class PalindromTest {
         String input = "Tooto";
         assertFalse(palindrom.isPalindromReplace(input));
     }
+    @Test
+    public void whenPalindromThenTrueStack() {
+        Palindrom palindrom = new Palindrom();
+        String input = "МаДАм";
+        assertTrue(palindrom.isPalindromStack(input));
+    }
+
+    @Test
+    public void whenNonPalindromThenFaulseStack() {
+        Palindrom palindrom = new Palindrom();
+        String input = "Tooto";
+        assertFalse(palindrom.isPalindromStack(input));
+    }
 }
